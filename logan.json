@@ -1,0 +1,28 @@
+{
+  "baseName": "mylog",
+  "transports": [
+    {"name":"console", "colorize": true, "level": "debug", "handleExceptions": true, "silent": false},
+    {"name":"file", "saveCount": 3, "level": "debug", "handleExceptions": true, "silent": false}
+  ],
+  "includeFilters": [
+    {"filter": "/qa-svn/", "levels": ["warn", "debug"]}
+  ],
+  "excludeFilters": [
+    {"filter": "/qa-svn/test/", "levels": ["warn", "debug", "error", "info"]}
+  ],
+  "timestamp": {"includeDate": true, "includeMilliseconds": true}
+  "showModule": true,
+  "colors": {
+    "debug": "green",
+    "info": "green",
+    "warn": "red",
+    "error": "red"
+  },
+  "levels": {
+    "debug": 0,
+    "info": 1,
+    "warn": 2,
+    "error": 3
+  },
+  "exitOnError": false,
+}

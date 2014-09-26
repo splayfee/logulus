@@ -1,0 +1,47 @@
+{
+  "name": "logan",
+  "version": "0.0.1",
+  "description": "Allows for structured logging to the console and the file system.",
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.sd.apple.com:interactive-qa-tools/logan.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.sd.apple.com/interactive-qa-tools/logan/issues"
+  },
+  "scripts": {
+    "docs": "./node_modules/.bin/jsdoc lib/* README.md -d docs",
+    "test": "gulp"
+  },
+  "keywords": [
+    "marcom",
+    "qa-tools"
+  ],
+  "homepage": "https://gitlab.sd.apple.com/interactive-qa-tools/logan",
+  "author": "dlatour <dlatour@apple.com>",
+  "license": "APPLE",
+  "dependencies": {
+    "async": "^0.9.0",
+    "chalk": "^0.5.1",
+    "fail-fast": "^1.0.0",
+    "html-report-template": "^1.1.0",
+    "logule": "^2.0.1",
+    "winston": "^0.8.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "del": "^0.1.1",
+    "gulp": "^3.8.6",
+    "gulp-conformity": "^0.1.1",
+    "gulp-eslint": "^0.1.8",
+    "gulp-istanbul": "^0.2.0",
+    "gulp-jsonlint": "0.0.3",
+    "gulp-mocha": "^0.5.0",
+    "jsdoc": "^3.3.0-alpha9",
+    "run-sequence": "^0.3.6"
+  },
+  "publishConfig": {
+    "registry": "https://npm.interactive-apps.apple.com/"
+  }
+}
