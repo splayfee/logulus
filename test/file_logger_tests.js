@@ -39,7 +39,7 @@ describe("File Logger", function() {
 
   describe("logging", function() {
 
-    var logPath = path.resolve(__dirname, "../logan.log");
+    var logPath = path.resolve(".", "logan.log");
     beforeEach(function() {
       fs.deleteSync(logPath);
     });
@@ -83,7 +83,7 @@ describe("File Logger", function() {
         expect(error).to.eql(null);
         logger.nextFile(function(error) {
           expect(error).to.eql(null);
-          fs.deleteSync(path.resolve(__dirname, "../logan-1.log"));
+          fs.deleteSync(path.resolve(".", "logan-1.log"));
           done();
         });
       });

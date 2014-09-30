@@ -10,49 +10,12 @@ var expect = chai.expect;
 var Logan = require("../lib/logan");
 var LoganProxy = require("../lib/logan_proxy");
 
-
 describe("Logan", function() {
-
-  describe("configuration", function() {
-
-    it("loads from an environment variable", function(done) {
-      process.env.LOGAN_CONFIG = "../test/fixtures/environment.json";
-      Logan.config = null;
-      Logan._loadConfig();
-      expect(Logan.config).to.be.an.instanceOf(Object);
-      expect(Logan.config.baseName).to.eql("environment");
-      done();
-    });
-
-    it("loads from a host file in the application directory", function(done) {
-      delete process.env.LOGAN_CONFIG;
-      Logan.config = null;
-      Logan._loadConfig();
-      expect(Logan.config).to.be.an.instanceOf(Object);
-      expect(Logan.config.baseName).to.eql("development");
-      done();
-    });
-
-    it("loads the default configuration", function(done) {
-      process.env.LOGAN_CONFIG = "../test/fixtures/missing.json";
-      var originalFunction = os.hostname;
-      os.hostname = function() {
-        return "missing.local";
-      };
-      Logan.config = null;
-      Logan._loadConfig();
-      expect(Logan.config).to.be.an.instanceOf(Object);
-      expect(Logan.config.baseName).to.eql("logan");
-      os.hostname = originalFunction;
-      done();
-
-    });
-
-  });
 
   describe("logging", function() {
 
-    var logFilePath = path.resolve(__dirname, "../development.log");
+
+    var logFilePath = path.resolve(".", "logan.log");
 
     afterEach(function() {
       fs.deleteSync(logFilePath);
@@ -67,8 +30,11 @@ describe("Logan", function() {
 
       var intervalObj = setInterval(onInterval, 1000);
 
+      var counter = 0;
+
       function onInterval() {
-        if (fs.existsSync(logFilePath)) {
+        counter++;
+        if (fs.existsSync(logFilePath) || counter >= 5) {
           clearInterval(intervalObj);
           fs.readFile(logFilePath, "utf8", function(error, data) {
             expect(data).to.include("debug");
@@ -181,5 +147,45 @@ describe("Logan", function() {
 
   });
 
+  describe("configuration", function() {
+
+    it("loads from an environment variable", function(done) {
+      process.env.LOGAN_CONFIG = "test/fixtures/environment.json";
+      Logan.config = null;
+      Logan._loadConfig();
+      expect(Logan.config).to.be.an.instanceOf(Object);
+      expect(Logan.config.baseName).to.eql("environment");
+      done();
+    });
+
+    it("loads from a host file in the application directory", function(done) {
+      delete process.env.LOGAN_CONFIG;
+      Logan.config = null;
+      var hostnameFunction = os.hostname;
+      os.hostname = function() {
+        return "testhost.local";
+      }
+      Logan._loadConfig();
+      expect(Logan.config).to.be.an.instanceOf(Object);
+      expect(Logan.config.baseName).to.eql("development");
+      os.hostname = hostnameFunction;
+      done();
+    });
+
+    it("loads the default configuration in the application directory", function(done) {
+      var loadHostConfig = Logan._loadHostConfig;
+      Logan._loadHostConfig = function() {
+        return false;
+      };
+      Logan.config = null;
+      Logan._loadConfig();
+      expect(Logan.config).to.be.an.instanceOf(Object);
+      expect(Logan.config.baseName).to.eql("logan");
+      Logan._loadHostConfig = loadHostConfig;
+      done();
+
+    });
+
+  });
 
 });
