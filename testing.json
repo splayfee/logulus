@@ -1,5 +1,5 @@
 {
-  "baseName": "logan",
+  "baseName": "testing",
   "transports": [
     {"name":"console", "colorize": true, "level": "debug", "handleExceptions": true, "silent": false},
     {"name":"file", "saveCount": 5, "level": "debug", "handleExceptions": true, "silent": false}

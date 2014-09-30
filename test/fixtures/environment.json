@@ -1,5 +1,5 @@
 {
-  "baseName": "logan",
+  "baseName": "environment",
   "transports": [
     {"name":"console", "colorize": true, "level": "debug", "handleExceptions": true, "silent": false},
     {"name":"file", "saveCount": 5, "level": "debug", "handleExceptions": true, "silent": false}
@@ -11,8 +11,8 @@
   "showModule": true,
   "colors": {
     "debug": "green",
-    "info": "yellow",
-    "warn": "red",
+    "info": "green",
+    "warn": "yellow",
     "error": "red"
   },
   "levels": {
