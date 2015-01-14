@@ -16,7 +16,10 @@
   "scripts": {
     "test": "./node_modules/.bin/gulp"
   },
-  "keywords": [],
+  "keywords": [
+    "logging",
+    "support"
+  ],
   "homepage": "https://gitlab.sd.apple.com/interactive-qa-tools/logan",
   "author": "dlatour <dlatour@apple.com>",
   "license": "APPLE",
