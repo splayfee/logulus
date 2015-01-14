@@ -16,10 +16,7 @@
   "scripts": {
     "test": "./node_modules/.bin/gulp"
   },
-  "keywords": [
-    "marcom",
-    "qa-tools"
-  ],
+  "keywords": [],
   "homepage": "https://gitlab.sd.apple.com/interactive-qa-tools/logan",
   "author": "dlatour <dlatour@apple.com>",
   "license": "APPLE",
