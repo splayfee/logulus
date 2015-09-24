@@ -1,5 +1,5 @@
 {
-    "baseName": "testing",
+    "baseName": "logulus",
     "transports": [
         {
             "name": "console",

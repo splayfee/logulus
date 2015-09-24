@@ -1,17 +1,15 @@
 {
-    "baseName": "testing",
+    "baseName": "development",
     "transports": [
         {
             "name": "console",
             "colorize": true,
-            "level": "debug",
             "handleExceptions": true,
             "silent": false
         },
         {
             "name": "file",
             "saveCount": 5,
-            "level": "debug",
             "handleExceptions": true,
             "silent": false
         }

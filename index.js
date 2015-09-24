@@ -1,4 +1,4 @@
 "use strict";
 
-var /*Logan*/ Logan = require("./lib/logan");
-module.exports = Logan;
+var Logulus = require( "./lib/logulus" );
+module.exports = Logulus;
