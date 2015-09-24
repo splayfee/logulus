@@ -35,6 +35,15 @@ You begin by instantiating the module.
     log.error("An error occurred");
 ```
 
+Winston can be accessed from the logulus instance:
+
+```javascript
+    // The create method takes in the current module id.
+    var log = require("logulus").create(module.id);
+    log.winston.remove('console');
+```
+
+
 Example configuration file
 
 ```json
