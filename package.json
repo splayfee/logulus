@@ -1,6 +1,6 @@
 {
   "name": "logulus",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Logulus adds many features to the Winston logging system. It provides advanced logging services for your modules.",
   "main": "./index.js",
   "repository": {

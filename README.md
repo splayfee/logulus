@@ -14,6 +14,7 @@
 - You can optionally filter module messages based on partial path matching and levels matching (includeFilters, excludeFilters).
 - Messages can optionally include JSON metadata.
 - You can configure the number of log files to save while rotating.
+- You can specify a directory in the config as well (ex., `logs`).
 
 ## Installation
 
