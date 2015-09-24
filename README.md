@@ -84,3 +84,5 @@ Example configuration file
 ```
 
 ## License
+
+MIT
