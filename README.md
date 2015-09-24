@@ -27,8 +27,10 @@
 You begin by instantiating the module.
 
 ```javascript
+    // This allows access to the FileLogger class and the create method.
+    var Logulus = require( "logulus" );
     // The create method takes in the current module id.
-    var log = require("logulus").create(module.id);
+    var log = Logulus.create(module.id);
 
     // Basic usage
     log.debug("This is a debug message", {name: "David", age: 46});
