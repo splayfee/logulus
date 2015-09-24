@@ -33,7 +33,7 @@
     },
     "showModule": true,
     "colors": {
-        "debug": "green",
+        "debug": "white",
         "info": "blue",
         "warn": "yellow",
         "error": "red"

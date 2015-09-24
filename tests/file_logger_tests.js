@@ -41,11 +41,11 @@ describe( "File Logger", function () {
 
         var logPath = path.resolve( ".", "logulus.log" );
         beforeEach( function () {
-            fs.deleteSync( logPath );
+            fs.removeSync( logPath );
         } );
 
         afterEach( function () {
-            fs.deleteSync( logPath );
+            fs.removeSync( logPath );
         } );
 
         it( "doesn't log a message using the transport", function ( done ) {
@@ -83,7 +83,7 @@ describe( "File Logger", function () {
                 expect( error ).to.eql( null );
                 logger.nextFile( function ( error ) {
                     expect( error ).to.eql( null );
-                    fs.deleteSync( path.resolve( ".", "logulus-1.log" ) );
+                    fs.removeSync( path.resolve( ".", "logulus-1.log" ) );
                     done();
                 } );
             } );

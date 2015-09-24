@@ -10,8 +10,8 @@
   "timestampSettings": {"includeDate": true, "includeMilliseconds": true},
   "showModule": true,
   "colors": {
-    "debug": "green",
-    "info": "green",
+    "debug": "white",
+    "info": "blue",
     "warn": "yellow",
     "error": "red"
   },

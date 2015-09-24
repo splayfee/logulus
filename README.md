@@ -8,8 +8,8 @@
 - Provides customizable levels of logging, defaults to `debug`, `info`, `warn`, and `error`.
 - Configuration via JSON, attempts to load the config in the following order, it stops once one of the methods is successful:
 	- Check for a LOGULUS_CONFIG environment variable, if it exists then load the config file indicated by the variable.
-	- Check the `package.json` version, if it includes `-alpha`, `beta`, or `-rc` then use the included `testing.json` config found in the application directory.
 	- Check for a configuration file named after the host, if it exists then load it.
+	- Check the `package.json` version, if it includes `-alpha`, `beta`, or `-rc` then use the included `testing.json` config found in the application directory.
 	- Check for the default `defaults.json` config file in the application directory, if it exists load it.
 	- If no config files are found the application defaults to full logging.
 - You can optionally filter module messages based on partial path matching and levels matching (includeFilters, excludeFilters).
@@ -59,9 +59,9 @@ Example configuration file
       "timestampSettings": {"includeDate": true, "includeMilliseconds": true},
       "showModule": true,
       "colors": {
-        "debug": "green",
-        "info": "yellow",
-        "warn": "red",
+        "debug": "white",
+        "info": "blue",
+        "warn": "yellow",
         "error": "red"
       },
       "levels": {

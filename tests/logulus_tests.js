@@ -15,10 +15,10 @@ describe( "Logulus", function () {
     describe( "logging", function () {
 
 
-        var logFilePath = path.resolve( ".", "logulus.log" );
+        var logFilePath = path.resolve( ".", "default.log" );
 
         afterEach( function () {
-            fs.deleteSync( logFilePath );
+            fs.removeSync( logFilePath );
         } );
 
         it( "creates a log file and logs four messages", function ( done ) {
@@ -172,19 +172,6 @@ describe( "Logulus", function () {
             done();
         } );
 
-        it( "loads the default configuration in the application directory", function ( done ) {
-            var loadHostConfig = Logulus._loadHostConfig;
-            Logulus._loadHostConfig = function () {
-                return false;
-            };
-            Logulus.config = null;
-            Logulus._loadConfig();
-            expect( Logulus.config ).to.be.an.instanceOf( Object );
-            expect( Logulus.config.baseName ).to.eql( "logulus" );
-            Logulus._loadHostConfig = loadHostConfig;
-            done();
-
-        } );
 
     } );
 
