@@ -51,8 +51,7 @@ Similarly, the active logger can be access as well:
 ```javascript
     // The create method takes in the current module id.
     var log = require("logulus").create(module.id);
-    var fileLogger = log.logger.transports['logulus-file'];
-    
+    var fileLogger = log.logger.transports['logulus-file']; 
 ```
 
 Example configuration file
