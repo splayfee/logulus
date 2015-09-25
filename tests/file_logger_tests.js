@@ -75,11 +75,11 @@ describe( "File Logger", function () {
         } );
     } );
 
-    describe( "log rotation", function () {
+     describe( "log rotation", function () {
 
         it( "rotates the logs by changing the name of the current files", function ( done ) {
             var logger = new FileLogger();
-            logger.log( "debug", "This is a test", {name: "David", age: 46}, function ( error ) {
+            logger.log( "debug", "This is a test ", {name: "David", age: 46}, function ( error ) {
                 expect( error ).to.eql( null );
                 logger.nextFile( function ( error ) {
                     expect( error ).to.eql( null );

@@ -14,7 +14,8 @@
 - You can optionally filter module messages based on partial path matching and levels matching (includeFilters, excludeFilters).
 - Messages can optionally include JSON metadata.
 - You can configure the number of log files to save while rotating.
-- You can specify a directory in the config as well (ex., `logs`).
+- You can specify a directory in the file transport config as well (ex., `logs`).
+- If you specify 0 for saveCount then the file logger will continue to use the same file.
 
 ## Installation
 
@@ -45,6 +46,14 @@ Winston can be accessed from the logulus instance:
     log.winston.remove('console');
 ```
 
+Similarly, the active logger can be access as well:
+
+```javascript
+    // The create method takes in the current module id.
+    var log = require("logulus").create(module.id);
+    var fileLogger = log.logger.transports['logulus-file'];
+    
+```
 
 Example configuration file
 
@@ -52,8 +61,8 @@ Example configuration file
     {
       "baseName": "mylog",
       "transports": [
-        {"name":"console", "colorize": true, "level": "debug", "handleExceptions": true, "silent": false},
-        {"name":"file", "saveCount": 5, "level": "debug", "handleExceptions": true, "silent": false}
+        {"type":"console", "name":"logulus-console", "colorize": true, "level": "debug", "handleExceptions": true, "silent": false},
+        {"type":"file", "name":"logulus-file", "saveCount": 5, "level": "debug", "handleExceptions": true, "silent": false}
       ],
       "includeFilters": [
         {"pattern": "*", "levels": ["debug", "info", "warn", "error"]}

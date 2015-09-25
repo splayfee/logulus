@@ -1,8 +1,8 @@
 {
   "baseName": "environment",
   "transports": [
-    {"name":"console", "colorize": true, "level": "debug", "handleExceptions": true, "silent": false},
-    {"name":"file", "saveCount": 5, "level": "debug", "handleExceptions": true, "silent": false}
+    {"type": "console", "name":"logulus-console", "colorize": true, "level": "debug", "handleExceptions": true, "silent": false},
+    {"type": "file", "name":"logulus-file", "saveCount": 5, "level": "debug", "handleExceptions": true, "silent": false}
   ],
   "includeFilters": [
     {"pattern": "*", "levels": ["debug", "info", "warn", "error"]}

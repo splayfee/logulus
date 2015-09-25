@@ -2,13 +2,15 @@
     "baseName": "development",
     "transports": [
         {
-            "name": "console",
+            "type": "console",
+            "name": "logulus-console",
             "colorize": true,
             "handleExceptions": true,
             "silent": false
         },
         {
-            "name": "file",
+            "type": "file",
+            "name": "logulus-file",
             "saveCount": 5,
             "handleExceptions": true,
             "silent": false
