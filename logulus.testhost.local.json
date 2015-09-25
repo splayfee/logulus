@@ -13,7 +13,8 @@
             "name": "logulus-file",
             "saveCount": 5,
             "handleExceptions": true,
-            "silent": false
+            "silent": false,
+            "directory": "logs"
         }
     ],
     "includeFilters": [
