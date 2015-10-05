@@ -12,10 +12,12 @@ var LogulusProxy = require( "../lib/logulus_proxy" );
 
 describe( "Logulus", function () {
 
+    this.timeout(10000);
+
     describe( "logging", function () {
 
 
-        var logFilePath = path.resolve( ".", "default.log" );
+        var logFilePath = path.resolve( "./logs", "default.log" );
 
         afterEach( function () {
             fs.removeSync( logFilePath );
@@ -34,7 +36,7 @@ describe( "Logulus", function () {
 
             function onInterval() {
                 counter++;
-                if (fs.existsSync( logFilePath ) || counter >= 5) {
+                if (fs.existsSync( logFilePath ) || counter >= 4) {
                     clearInterval( intervalObj );
                     fs.readFile( logFilePath, "utf8", function ( error, data ) {
                         expect( data ).to.include( "debug" );
