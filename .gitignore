@@ -1,5 +1,5 @@
 coverage
 .idea
 node_modules
-/examples
+/logs
 *.log
