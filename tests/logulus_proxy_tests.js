@@ -1,24 +1,20 @@
 "use strict";
 
-var chai = require( "chai" );
-var expect = chai.expect;
-
 var log = require( "../lib/logulus" ).create( module.id );
 
 describe( "Logulus Proxy", function () {
 
     describe( "upon instantiation", function () {
 
-        it( "dynamically creates a series of methods based on levels settings", function ( done ) {
-            expect( log.debug ).to.be.an.instanceOf( Function );
-            expect( log.debug.length ).to.eql( 3 );
-            expect( log.info ).to.be.an.instanceOf( Function );
-            expect( log.info.length ).to.eql( 3 );
-            expect( log.warn ).to.be.an.instanceOf( Function );
-            expect( log.warn.length ).to.eql( 3 );
-            expect( log.error ).to.be.an.instanceOf( Function );
-            expect( log.error.length ).to.eql( 3 );
-            done();
+        it( "dynamically creates a series of methods based on levels settings", function () {
+            expect( log.debug ).toBeInstanceOf( Function );
+            expect( log.debug.length ).toEqual( 3 );
+            expect( log.info ).toBeInstanceOf( Function );
+            expect( log.info.length ).toEqual( 3 );
+            expect( log.warn ).toBeInstanceOf( Function );
+            expect( log.warn.length ).toEqual( 3 );
+            expect( log.error ).toBeInstanceOf( Function );
+            expect( log.error.length ).toEqual( 3 );
 
         } );
 

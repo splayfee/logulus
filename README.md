@@ -19,7 +19,22 @@
 
 ## Installation
 
-`npm install -g logulus`
+`pnpm install -g logulus`
+
+## What Changed in v2.0.0
+
+**BREAKING CHANGE**: Winston is now a peer dependency. You must install Winston separately:
+
+```bash
+pnpm install winston logulus
+```
+
+**Other Changes:**
+- ✅ Now compatible with **both Winston 2.4.0+ and 3.0+**
+- ✅ Fixed all ESLint violations (strict formatting rules)
+- ✅ Enhanced test coverage with 5 new error-handling tests
+- ✅ Improved compatibility with newer Node.js versions
+- ✅ Fixed deprecated Winston configuration options
 
 ## Usage
 

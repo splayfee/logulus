@@ -3,9 +3,6 @@
 var fs = require( "fs-extra" );
 var path = require( "path" );
 
-var chai = require( "chai" );
-var expect = chai.expect;
-
 var FileLogger = require( "../lib/file_logger" );
 
 
@@ -13,26 +10,23 @@ describe( "File Logger", function () {
 
     describe( "instantiation", function () {
 
-        it( "creates a new file logger", function ( done ) {
+        it( "creates a new file logger", function () {
             var logger = new FileLogger();
-            expect( logger ).to.be.an.instanceOf( FileLogger );
-            done();
+            expect( logger ).toBeInstanceOf( FileLogger );
         } );
 
     } );
 
     describe( "default timestamp", function () {
-        it( "creates a default timestamp", function ( done ) {
+        it( "creates a default timestamp", function () {
             var timestamp = FileLogger._defaultTimestamp( new Date( "8/31/1968 5:45 pm" ) );
-            expect( timestamp ).to.eql( "17:45:00" );
-            done();
+            expect( timestamp ).toEqual( "17:45:00" );
         } );
 
-        it( "creates a timestamp base on current time", function ( done ) {
+        it( "creates a timestamp base on current time", function () {
             var timestamp = FileLogger._defaultTimestamp();
-            expect( typeof timestamp ).to.eql( "string" );
-            expect( timestamp ).to.have.length( 8 );
-            done();
+            expect( timestamp ).toBeTypeOf( "string" );
+            expect( timestamp ).toHaveLength( 8 );
         } );
 
     } );
@@ -48,43 +42,65 @@ describe( "File Logger", function () {
             fs.removeSync( logPath );
         } );
 
-        it( "doesn't log a message using the transport", function ( done ) {
+        it( "doesn't log a message using the transport", function () {
             var logger = new FileLogger();
             logger.silent = true;
-            logger.log( "debug", "This is a test", {name: "David", age: 46}, function ( error ) {
-                expect( error ).to.eql( null );
-                done();
+            return new Promise( function ( resolve, reject ) {
+                logger.log( "debug", "This is a test", {name: "David", age: 46}, function ( error ) {
+                    try {
+                        expect( error ).toEqual( null );
+                        resolve();
+                    } catch (assertionError) {
+                        reject( assertionError );
+                    }
+                } );
             } );
         } );
 
-        it( "logs a message using the transport", function ( done ) {
+        it( "logs a message using the transport", function () {
             var logger = new FileLogger();
-            logger.log( "debug", "This is a test", {name: "David", age: 46}, function ( error ) {
-                expect( error ).to.eql( null );
-                done();
+            return new Promise( function ( resolve, reject ) {
+                logger.log( "debug", "This is a test", {name: "David", age: 46}, function ( error ) {
+                    try {
+                        expect( error ).toEqual( null );
+                        resolve();
+                    } catch (assertionError) {
+                        reject( assertionError );
+                    }
+                } );
             } );
         } );
     } );
 
     describe( "get file path", function () {
-        it( "returns a fully qualified file path", function ( done ) {
+        it( "returns a fully qualified file path", function () {
             var logger = new FileLogger();
             var filePath = logger._getFilePath( 6 );
-            expect( filePath ).to.contain( "/logulus-6.log" );
-            done();
+            expect( filePath ).toContain( "/logulus-6.log" );
         } );
     } );
 
      describe( "log rotation", function () {
 
-        it( "rotates the logs by changing the name of the current files", function ( done ) {
+        it( "rotates the logs by changing the name of the current files", function () {
             var logger = new FileLogger();
-            logger.log( "debug", "This is a test ", {name: "David", age: 46}, function ( error ) {
-                expect( error ).to.eql( null );
-                logger.nextFile( function ( error ) {
-                    expect( error ).to.eql( null );
-                    fs.removeSync( path.resolve( ".", "logulus-1.log" ) );
-                    done();
+            return new Promise( function ( resolve, reject ) {
+                logger.log( "debug", "This is a test ", {name: "David", age: 46}, function ( error ) {
+                    try {
+                        expect( error ).toEqual( null );
+                    } catch (assertionError) {
+                        reject( assertionError );
+                        return;
+                    }
+                    logger.nextFile( function ( nextError ) {
+                        try {
+                            expect( nextError ).toEqual( null );
+                            fs.removeSync( path.resolve( ".", "logulus-1.log" ) );
+                            resolve();
+                        } catch (assertionError) {
+                            reject( assertionError );
+                        }
+                    } );
                 } );
             } );
         } );
@@ -92,11 +108,10 @@ describe( "File Logger", function () {
     } );
 
     describe( "get file path", function () {
-        it( "returns a fully qualified file path", function ( done ) {
+        it( "returns a fully qualified file path", function () {
             var logger = new FileLogger();
             var filePath = logger._getFilePath( 6 );
-            expect( filePath ).to.contain( "/logulus/logulus-6.log" );
-            done();
+            expect( filePath ).toContain( "/logulus/logulus-6.log" );
         } );
     } );
 
